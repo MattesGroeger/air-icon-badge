@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<project name="air-icon-badge" basedir="../" default="[publish] library">
+	
+	<property file="script/user_${user.name}.properties" />
+	<property file="script/project.properties" />
+	
+	<target name="[publish] library" description="compiles swc, generate docs, updates ivy configuration">
+		
+		<antcall target="[ivy] update"/>
+		<antcall target="[compile] library"/>
+		<antcall target="[asdoc] generate"/>
+		<antcall target="[publish] zip"/>
+		
+	</target>
+	
+	<target name="[compile] library">
+		
+		<xmlproperty file="${ivy.dir}/ivy.xml"/>
+		
+		<mkdir dir="${deploy.dir}" />
+
+		<delete includeemptydirs="true">
+			<fileset dir="${deploy.dir}" includes="**/*" />
+		</delete>
+		
+		<exec executable="${compc}" spawn="no">
+			<arg line="+configname=air" />
+			<arg line="-sp ${src.dir}"/>
+			<arg line="-el ${libs.dir}"/>
+			<arg line="-el ${playerglobal.swc}"/>
+			<arg line="-el ${flexsdk.lib.dir}"/>
+			<arg line="-el ${airglobal.swc}"/>
+			<arg line="-is ${src.dir}"/>
+			<arg line="-output='${deploy.dir}/${library.name}-${ivy-module.info(revision)}.swc'"/>
+		</exec>
+		
+	</target>
+	
+	<target name="[asdoc] generate">
+
+		<mkdir dir="${docs.dir}" />
+
+		<delete includeemptydirs="true">
+			<fileset dir="${docs.dir}" includes="**/*" />
+		</delete>
+
+		<exec executable="${asdoc}" spawn="no">
+			<arg line="+configname=air" />
+			<arg line="-o '${docs.dir}'" />
+			<arg line="-library-path '${libs.dir}'" />
+			<arg line="-sp '${src.dir}'" />
+			<arg line="-ds '${src.dir}' " />
+			<arg line="-window-title 'Adobe ActionScript 3.0 Library - ${title}'" />
+		</exec>
+
+	</target>
+	
+	<target name="[ivy] update">
+		
+		<xmlproperty file="${ivy.dir}/ivy.xml"/>
+		
+		<input message="Choose the revision number:"
+			addproperty="publish.revision" 
+			defaultvalue="${ivy-module.info(revision)}"/>
+		<replace file="${ivy.dir}/ivy.xml" token="${ivy-module.info(revision)}" value="${publish.revision}"/>
+		
+		<tstamp>
+			<format property="publish.time" pattern="yyyyMMddhhmmss"/>
+		</tstamp>
+		<replace file="${ivy.dir}/ivy.xml" token="${ivy-module.info(publication)}" value="${publish.time}"/>
+		
+	</target>
+	
+	<target name="[publish] zip">
+		
+		<mkdir dir="${publish.dir}" />
+		
+		<delete dir="${publish.dir}">
+			<exclude name="${publish.dir}"/>
+		</delete>
+		
+		<xmlproperty file="${ivy.dir}/ivy.xml"/>
+		
+		<zip destfile="${publish.dir}/${library.name}-${ivy-module.info(revision)}.zip">
+			<zipfileset dir="${docs.dir}" prefix="docs"/>
+			<zipfileset dir="${ivy.dir}" includes="ivy.xml" fullpath="ivy.xml"/>
+			<zipfileset dir="${deploy.dir}" includes="**/*.swc" fullpath=""/>
+		</zip>
+		
+	</target>
+
+</project>

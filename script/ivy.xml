@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://ivyrep.jayasoft.org/ivy-doc.xsl"?>
+<ivy-module version="1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+	<info organisation="mattesgroeger" module="air-icon-badge"
+		revision="0.1" status="release" publication="20100207054234">
+		<license name="MIT License"
+			url="http://www.opensource.org/licenses/mit-license.php" />
+		<ivyauthor name="Mattes Groeger" url="http://blog.mattes-groeger.de/" />
+		<description homepage="http://code.google.com/p/air-icon-badge/">
+			This library allows you to display an OS X-like badge label on the dock
+			icon for your air application
+        </description>
+	</info>
+</ivy-module>

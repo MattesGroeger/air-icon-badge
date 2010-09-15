@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.powerflasher.fdt.ui.MxmlcGroup">
+<stringAttribute key="APP_ARGUMENTS" value=""/>
+<stringAttribute key="ARGUMENTS" value="-default-size 1300 800 -default-frame-rate 31 -default-background-color 0xFFFFFF -library-path {flexSDK}/frameworks/locale/en_US"/>
+<stringAttribute key="FLEX_SDK_NAME" value="Flex_3_SDK_0_with_AIR"/>
+<booleanAttribute key="KILL_PREVIUOS_VIEWER" value="false"/>
+<stringAttribute key="MAIN_CLASS" value="dev/src_test/TestRunner.mxml"/>
+<stringAttribute key="OUTPUT" value="dev/deploy_test/TestRunner.swf"/>
+<booleanAttribute key="PASS_CP" value="true"/>
+<booleanAttribute key="PASS_MAIN_CLASS" value="true"/>
+<booleanAttribute key="PASS_SWCS" value="true"/>
+<intAttribute key="PLAYER_HEIGHT" value="800"/>
+<intAttribute key="PLAYER_WIDTH" value="1300"/>
+<stringAttribute key="POST_COMPILE_ANT" value=""/>
+<stringAttribute key="PRE_COMPILE_ANT" value=""/>
+<stringAttribute key="PROJECT_NAME" value="air-icon-badge"/>
+<stringAttribute key="PUBLISHER_ID" value=""/>
+<booleanAttribute key="START_SWF_ENABLED" value="true"/>
+<stringAttribute key="START_SWF_LOCATION" value="dev/deploy_test/TestRunner.swf"/>
+<stringAttribute key="START_SWF_WITH" value="AIR Debug Launcher"/>
+<booleanAttribute key="USE_GLOBAL_FCSH_LOCATION" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/air-icon-badge"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="process_factory_id" value="com.powerflasher.fdt.ui.launch.fcsh.ProcessFactory"/>
+</launchConfiguration>
